@@ -1,0 +1,47 @@
+HOME            = .
+RANDFILE        = /var/.rnd
+
+####################################################################    
+[ req ]
+default_bits        = 2048
+default_keyfile     = server/serverkey.pem
+distinguished_name  = server_distinguished_name
+req_extensions      = server_req_extensions
+string_mask         = utf8only
+
+####################################################################
+[ server_distinguished_name ]
+countryName         = CN
+countryName_default     = CN
+
+stateOrProvinceName     = Hubei
+stateOrProvinceName_default = Hubei
+
+localityName            = Wuhan
+localityName_default        = Wuhan
+
+rganizationName         = Huawei Technologies Co., Ltd
+organizationName_default    = Huawei Technologies Co., Ltd
+
+commonName          = mediarouter.home
+commonName_default      = mediarouter.home
+
+emailAddress            = mobile@huawei.com
+emailAddress_default        = mobile@huawei.com
+
+####################################################################
+[ server_req_extensions ]
+
+subjectKeyIdentifier        = hash
+basicConstraints        = CA:FALSE
+keyUsage            = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName          = @alternate_names
+nsComment           = "OpenSSL Generated Certificate"
+
+####################################################################
+[ alternate_names ]
+
+DNS.1       = mediarouter.home
+DNS.2       = mediarouter1.home
+DNS.3       = mediarouter2.home
+DNS.4       = mediarouter3.home

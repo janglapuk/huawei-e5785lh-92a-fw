@@ -1,0 +1,108 @@
+#!/system/bin/sh
+
+NV_RESTORE_FLAG=$(cat /proc/dload_nark)
+if [ ${NV_RESTORE_FLAG} == "nv_restore_start" ] ;then
+    echo "This is nv restore!!!"
+    exit 0
+fi
+mkdir /var
+
+mkdir /var/run
+
+mkdir /var/log
+
+
+mkdir /var/tmp
+
+mkdir /var/nvram
+
+busybox ln -sf /system/bin/busybox /bin/ln
+busybox ln -sf /system/bin/busybox /bin/ifconfig
+busybox ln -sf /system/bin/busybox /bin/route
+busybox ln -sf /system/bin/busybox /bin/netstat
+busybox ln -sf /system/bin/busybox /bin/tftp
+busybox ln -sf /system/bin/busybox /bin/diff
+busybox ln -sf /system/bin/busybox /bin/find
+##########add begin for euap#############
+busybox ln -sf /system/bin/busybox /bin/vi
+##########add end for euap#############
+#busybox ln -sf /system/bin/busybox /bin/free
+busybox ln -sf /system/bin/busybox /bin/ftpget
+busybox ln -sf /system/bin/busybox /bin/ftpput
+#busybox ln -sf /system/bin/busybox /bin/ipup
+#busybox ln -sf /system/bin/busybox /bin/ipdown
+#busybox ln -sf /system/bin/busybox /bin/iproute
+#busybox ln -sf /system/bin/busybox /bin/iplink
+busybox ln -sf /system/bin/busybox /bin/killall
+#busybox ln -sf /system/bin/busybox /bin/man
+busybox ln -sf /system/bin/busybox /bin/more
+busybox ln -sf /system/bin/busybox /bin/traceroute
+busybox ln -sf /system/bin/busybox /bin/traceroute6
+busybox ln -sf /system/bin/busybox /bin/ping
+busybox ln -sf /system/bin/busybox /bin/ping6
+busybox ln -sf /system/bin/busybox /bin/pwd
+#busybox ln -sf /system/bin/busybox /bin/lsusb
+#busybox ln -sf /system/bin/busybox /bin/lspci
+#########use toolbox ls command######
+#busybox ln -sf /system/bin/busybox /bin/ls
+##########add for atp##############
+busybox ln -sf /system/bin/busybox /bin/[
+busybox ln -sf /system/bin/busybox /bin/[[
+busybox ln -sf /system/bin/busybox /bin/arp
+busybox ln -sf /system/bin/busybox /bin/ash
+busybox ln -sf /system/bin/busybox /bin/awk
+busybox ln -sf /system/bin/busybox /bin/crontab
+busybox ln -sf /system/bin/busybox /bin/echo
+busybox ln -sf /system/bin/busybox /bin/halt
+busybox ln -sf /system/bin/busybox /bin/init
+busybox ln -sf /system/bin/busybox /bin/makedevs
+busybox ln -sf /system/bin/busybox /bin/mknod
+busybox ln -sf /system/bin/busybox /bin/poweroff
+busybox ln -sf /system/bin/busybox /bin/sed
+busybox ln -sf /system/bin/busybox /bin/smuxctl
+busybox ln -sf /system/bin/busybox /bin/start-stop-daemon
+busybox ln -sf /system/bin/busybox /bin/su
+busybox ln -sf /system/bin/busybox /bin/tar
+busybox ln -sf /system/bin/busybox /bin/test
+busybox ln -sf /system/bin/busybox /bin/udhcpc
+busybox ln -sf /system/bin/busybox /bin/usleep
+busybox ln -sf /system/bin/busybox /bin/vconfig
+busybox ln -sf /system/bin/busybox /bin/wget
+busybox ln -sf /system/bin/busybox /bin/cut
+makedevs -d /etc/devicetable /
+
+
+
+export LD_LIBRARY_PATH="/app/lib:/system/lib:/app/lib"
+
+export PATH="/bin:/sbin:/app/bin:/system/sbin:/system/bin:/system/xbin:/app/bin"
+
+export LUA_PATH="/app/webroot/lua/?.lua;/app/html/lua/?.lua;/etc/lua/?.lua"
+
+export LUA_CPATH="/app/lib/?.so;"
+
+export ANDROID_DNS_MODE="local"
+
+mlogserver &
+
+ln -s /data /app/webroot/data
+busybox echo 1 > /proc/sys/net/ipv4/ip_forward
+
+busybox echo 1 > /proc/sys/net/ipv6/conf/all/forwarding
+
+if busybox [ -e /data/coredebug ]
+then
+	ulimit -c unlimited
+	echo "1" > /proc/sys/kernel/core_uses_pid
+	echo "/online/log/core-%e-%p-%t" > /proc/sys/kernel/core_pattern
+fi
+
+if busybox [ -f "/root/ISO" ]
+then
+mount -t iso9660 -o loop /root/ISO /app/webroot/WebApp/common/autorun
+fi
+
+netmgrd &
+ln -s /dev/smd7 /dev/appvcom
+mic &
+

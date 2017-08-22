@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+<enable>0</enable>
+<sambaenable>0</sambaenable>
+<dlnaenable>0</dlnaenable>
+<samba>
+<printerenable>0</printerenable>
+<enabled>0</enabled>
+<servername>homerouter.cpe</servername>
+</samba>
+</config>

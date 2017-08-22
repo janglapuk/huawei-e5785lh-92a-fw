@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+<wifiBandWidthenable>1</wifiBandWidthenable>
+<autochannel5g>1</autochannel5g>
+</config>

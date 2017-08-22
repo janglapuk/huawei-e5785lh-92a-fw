@@ -1,0 +1,33 @@
+# See package/makedevs/README for details
+#
+# This device table is used only to create device files when a static
+# device configuration is used (entries in /dev are static).
+#
+# <name>	<type>	<mode>	<uid>	<gid>	<major>	<minor>	<start>	<inc>	<count>
+
+# Normal system devices
+
+# dir
+/var			d	770	1101	1101	-	-	-	-	-		
+/var/dhcp		d	775	0	0	-	-	-	-	-
+/var/dhcp/dhcps	d	775	2048	2048	-	-	-	-	-
+/var/dhcp/dhcpc	d	770	0	0	-	-	-	-	-
+/var/log		d	770	0	0	-	-	-	-	-
+/var/run 		d	770	1101	1101	-	-	-	-	-
+/var/run/ipc	d	770	1101	1101	-	-	-	-	-
+/var/run/msg	d	770	1101	1101	-	-	-	-	-
+/var/fs 		d	770	0	0	-	-	-	-	-
+/var/state/dhcp d	770	0	0	-	-	-	-	-	
+/var/zebra 		d	770	0	0	-	-	-	-	-
+/var/tmp 		d	770	0	0	-	-	-	-	-
+/var/usb		d	770	0	0	-	-	-	-	-
+/var/ftp		d	770	0	0	-	-	-	-	-
+/var/etc		d	770	0	0	-	-	-	-	-
+/var/locks		d	770	0	0	-	-	-	-	-
+/var/cache		d	770	0	0	-	-	-	-	-
+/var/Wireless	d	770	0	0	-	-	-	-	-
+/var/fon  	    d	770	0	0	-	-	-	-	-
+/var/fon/tmp  	d	770	0	0	-	-	-	-	-
+/var/fuse 		c 	770	0	0	10 229	-	-	-
+/tmp			d	770	1102	1102	-	-	-	-	-
+/mnt			d 	770	1103	1103	-	-	-	-	-

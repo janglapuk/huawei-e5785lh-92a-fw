@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+<hardware>
+<classify>mobile-wifi</classify>
+</hardware>
+<supportmode>LTE|WCDMA|GSM</supportmode>
+<copyright_enabled>1</copyright_enabled>
+<device_backup_enable>1</device_backup_enable>
+<global_backup_enable>1</global_backup_enable>
+<sms_backup_enable>1</sms_backup_enable>
+<atp_backup_enable>1</atp_backup_enable>
+<touch_backup_enable>1</touch_backup_enable>
+<pb_backup_enable>1</pb_backup_enable>
+<fastdorm>
+<fastdorm_enable>1</fastdorm_enable>
+<fastdorm_type>1</fastdorm_type>
+<fastdorm_time>5</fastdorm_time>
+</fastdorm>
+</config>
